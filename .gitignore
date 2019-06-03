@@ -1,0 +1,8 @@
+build
+.vscode
+*.elf
+*.nacp
+*.nro
+*.npdm
+*.nso
+*.nsp
