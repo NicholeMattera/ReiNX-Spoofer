@@ -1,0 +1,3 @@
+[submodule "libstratosphere"]
+	path = libstratosphere
+	url = git@github.com:Atmosphere-NX/libstratosphere.git
