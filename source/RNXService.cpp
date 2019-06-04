@@ -21,6 +21,7 @@
 
 #include <SimpleIniParser.hpp>
 #include <string>
+#include <iostream>
 #include <iomanip>
 
 #define DEFAULT_VERSION_MAJOR 2
@@ -80,7 +81,7 @@ Result RNXService::SetHbTidForDelta(u64 tid) {
     }
 
     stringstream stream;
-    stream << setfill('0') << setw(sizeof(u64) * 2) << hex << tid;
+    stream << setfill('0') << setw(sizeof(u64) * 2) << uppercase << hex << tid;
     title_id->value = stream.str();
 
     loader->writeToFile("sdmc:/atmosphere/loader.ini");
