@@ -30,7 +30,7 @@ Create the following directories on your SD Card:
 
 ```
 atmosphere/titles/0100000000001000
-ReiNX/0100000000001000
+ReiNX/titles/0100000000001000
 ```
 
-Extract the DeltaLaunch `exefs.nsp` to `atmosphere/titles/0100000000001000`. Then extract the DeltaLaunch `romfs.bin` file to `ReiNX/0100000000001000`. If/when you switch from not using DeltaLaunch you will need to edit your `loader.ini` file in `atmosphere/` back to the correct `title_id` I suggest making a backup of this file as the service will modify it. I also suggest only running this mock service if you are trying out DeltaLaucnh, as EdiZon and other homebrew may assume you are running ReiNX and produce warnings.
+Extract the DeltaLaunch `exefs.nsp` to `atmosphere/titles/0100000000001000`. Then extract the DeltaLaunch `romfs.bin` file to `ReiNX/titles/0100000000001000`. If/when you switch from not using DeltaLaunch you will need to edit your `loader.ini` file in `atmosphere/` back to the correct `title_id` I suggest making a backup of this file as the service will modify it. I also suggest only running this mock service if you are trying out DeltaLaucnh, as EdiZon and other homebrew may assume you are running ReiNX and produce warnings.
