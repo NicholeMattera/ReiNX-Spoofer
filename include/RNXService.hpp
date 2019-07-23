@@ -34,7 +34,7 @@ class RNXService final : public IServiceObject {
 
     public:
         DEFINE_SERVICE_DISPATCH_TABLE {
-            MakeServiceCommandMeta<RNX_CMD_GetReiNXVersion, &RNXService::GetReiNXVersion>(),
-            MakeServiceCommandMeta<RNX_CMD_SetHbTidForDelta, &RNXService::SetHbTidForDelta>(),
+            MakeServiceCommandMeta<RNX_CMD_GetReiNXVersion, &RNXService::GetReiNXVersion, RNXService>(),
+            MakeServiceCommandMeta<RNX_CMD_SetHbTidForDelta, &RNXService::SetHbTidForDelta, RNXService>(),
         };
 };

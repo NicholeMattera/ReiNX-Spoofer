@@ -21,6 +21,7 @@
 #include <stratosphere.hpp>
 
 #include "RNXService.hpp"
+#include "TXService.hpp"
 
 extern "C" {
     extern u32 __start__;
@@ -81,6 +82,7 @@ int main(int argc, char * argv[])
 {
     auto server_manager = new WaitableManager<LoaderServerOptions>(1);
     server_manager->AddWaitable(new ServiceServer<RNXService>("rnx", 1));
+    server_manager->AddWaitable(new ServiceServer<TXService>("tx", 1));
     server_manager->Process();
 
     delete server_manager;
