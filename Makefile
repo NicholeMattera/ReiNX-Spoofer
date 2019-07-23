@@ -59,11 +59,16 @@ LDFLAGS	=	-specs=$(DEVKITPRO)/libnx/switch.specs -g $(ARCH) -Wl,-Map,$(notdir $*
 
 LIBS	:= -lSimpleIniParser -lstratosphere -lnx
 
+ifneq (,$(shell which ccache))
+	CXX		:=	$(shell which ccache) $(CXX)
+	CC		:=	$(shell which ccache) $(CC)
+endif
+
 #---------------------------------------------------------------------------------
 # list of directories containing libraries, this must be the top level containing
 # include and lib
 #---------------------------------------------------------------------------------
-LIBDIRS	:= $(PORTLIBS) $(LIBNX) $(CURDIR)/libstratosphere
+LIBDIRS	:= $(PORTLIBS) $(LIBNX) $(CURDIR)/libstratosphere $(CURDIR)/SimpleIniParser
 
 
 #---------------------------------------------------------------------------------

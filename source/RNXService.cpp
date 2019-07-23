@@ -21,7 +21,6 @@
 
 #include <SimpleIniParser.hpp>
 #include <string>
-#include <iostream>
 #include <iomanip>
 
 #define DEFAULT_VERSION_MAJOR 2
@@ -72,11 +71,13 @@ Result RNXService::SetHbTidForDelta(u64 tid) {
 
     auto hbl = loader->findSection("hbl_config");
     if (hbl == nullptr) {
+        delete loader;
         return 0;
     }
 
     auto title_id = hbl->findFirstOption("title_id");
     if (title_id == nullptr) {
+        delete loader;
         return 0;
     }
 
