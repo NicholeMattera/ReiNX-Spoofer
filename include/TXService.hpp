@@ -1,6 +1,6 @@
 /*
  * ReiNX Spoofer
- * Copyright (c) 2019 Steven Mattera
+ * Copyright (c) 2019 Nichole Mattera
  * 
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -20,7 +20,6 @@
 #pragma once
 
 #include <stratosphere.hpp>
-#include <string>
 #include <switch.h>
 
 enum TXServiceCmd {
@@ -58,8 +57,6 @@ class TXService final : public IServiceObject {
         Result TX_135();
         Result TX_136();
         Result TX_137();
-
-        Result GetValueFromConfig(std::string optionName);
 
     public:
         DEFINE_SERVICE_DISPATCH_TABLE {

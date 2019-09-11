@@ -45,21 +45,22 @@ INCLUDES	:=	include
 #---------------------------------------------------------------------------------
 # options for code generation
 #---------------------------------------------------------------------------------
-ARCH	:=	-march=armv8-a+crc+crypto -mtune=cortex-a57 -mtp=soft -fPIE
+ARCH		:=	-march=armv8-a+crc+crypto -mtune=cortex-a57 -mtp=soft -fPIE
 
-CFLAGS	:=	-g -Wall -O2 -ffunction-sections \
-			$(ARCH) $(DEFINES)
+DEFINES		+=	-D__SWITCH__
 
-CFLAGS	+=	$(INCLUDE) -D__SWITCH__
+CFLAGS		:=	-g -Wall -O2 -ffunction-sections \
+					$(ARCH) $(DEFINES) $(INCLUDE)
 
-CXXFLAGS	:= $(CFLAGS) -fno-rtti -fno-exceptions -std=gnu++17
+CXXFLAGS	:=	$(CFLAGS) -fno-rtti -fno-exceptions -std=gnu++17
 
-ASFLAGS	:=	-g $(ARCH)
-LDFLAGS	=	-specs=$(DEVKITPRO)/libnx/switch.specs -g $(ARCH) -Wl,-Map,$(notdir $*.map)
+ASFLAGS		:=	-g $(ARCH)
+LDFLAGS		=	-specs=$(DEVKITPRO)/libnx/switch.specs -g $(ARCH) \
+					-Wl,-Map,$(notdir $*.map)
 
-LIBS	:= -lSimpleIniParser -lstratosphere -lnx
+LIBS		:=	-lSimpleIniParser -lstratosphere -lnx
 
-ifneq (,$(shell which ccache))
+ifneq ($(shell which ccache),)
 	CXX		:=	$(shell which ccache) $(CXX)
 	CC		:=	$(shell which ccache) $(CC)
 endif
@@ -164,7 +165,15 @@ endif
 all: $(BUILD)
 
 $(BUILD):
+ifeq ($(wildcard $(CURDIR)/SimpleIniParser/LICENSE),)
+	@$(error "Please run 'git submodule update --init' before running 'make'")
+endif
+ifeq ($(wildcard $(CURDIR)/libstratosphere/LICENSE),)
+	@$(error "Please run 'git submodule update --init' before running 'make'")
+endif
 	@[ -d $@ ] || mkdir -p $@
+	@$(MAKE) -C $(CURDIR)/SimpleIniParser -f $(CURDIR)/SimpleIniParser/Makefile
+	@$(MAKE) -C $(CURDIR)/libstratosphere -f $(CURDIR)/libstratosphere/Makefile
 	@$(MAKE) --no-print-directory -C $(BUILD) -f $(CURDIR)/Makefile
 
 #---------------------------------------------------------------------------------

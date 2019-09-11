@@ -1,6 +1,6 @@
 # ReiNX Spoofer
 
-This is a simple service that will mock the `rnx` service on Atmosphere. I have no plans to maintain this and just did it as a fun exercise to play with services and sys-modules on the Switch. Running this service may cause some apps to produce warnings about running ReiNX.
+This is a simple service that will mock the `rnx` and `tx` service on Atmosphere. I have no plans to maintain this and just did it as a fun exercise to play with services and sys-modules on the Switch. Running this service may cause some apps to produce warnings about running ReiNX.
 
 ## How to Build
 
@@ -10,17 +10,9 @@ Make sure you have all the submodules necessary to build by running:
 git submodule update --init --recursive
 ```
 
-Also make sure you have SimpleIniParser installed, you can find instructions [here](https://github.com/AtlasNX/SimpleIniParser). Once you have all the dependencies installed you can then build libstratosphere by running:
-
-```
-cd libstratosphere
-make
-```
-
 Then you can build ReiNX Spoofer:
 
 ```
-cd ..
 make
 ```
 
