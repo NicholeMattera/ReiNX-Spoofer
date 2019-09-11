@@ -1,6 +1,6 @@
 /*
  * ReiNX Spoofer
- * Copyright (c) 2019 Steven Mattera
+ * Copyright (c) 2019 Nichole Mattera
  * 
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -19,95 +19,64 @@
 
 #include "TXService.hpp"
 
-#include <SimpleIniParser.hpp>
-
-// This is obviously not the correct value that should be returned by the TX service.
-#define DEFAULT_VALUE 0x9001
-
-using namespace simpleIniParser;
-using namespace std;
-
 Result TXService::TX_123(InPointer<char> data) {
-    return GetValueFromConfig("tx123_result");
+    return 0;
 }
 
 Result TXService::TX_124(Out<u32> ret) {
-    ret.SetValue(GetValueFromConfig("tx124_value"));
-    return GetValueFromConfig("tx124_result");
+    ret.SetValue(0x100);
+    return 0;
 }
 
 Result TXService::TX_125() {
-    return GetValueFromConfig("tx125_result");
+    return 0;
 }
 
 Result TXService::TX_126(Out<u32> ret) {
-    ret.SetValue(GetValueFromConfig("tx126_value"));
-    return GetValueFromConfig("tx126_result");
+    ret.SetValue(0x666);
+    return 0;
 }
 
 Result TXService::TX_127() {
-    return GetValueFromConfig("tx127_result");
+    return 0x666;
 }
 
 Result TXService::TX_128() {
-    return GetValueFromConfig("tx128_result");
+    return 0;
 }
 
 Result TXService::TX_129() {
-    return GetValueFromConfig("tx129_result");
+    return 1;
 }
 
 Result TXService::TX_130() {
-    return GetValueFromConfig("tx130_result");
+    return 0;
 }
 
 Result TXService::TX_131() {
-    return GetValueFromConfig("tx131_result");
+    return 1;
 }
 
 Result TXService::TX_132() {
-    return GetValueFromConfig("tx132_result");
+    return 0;
 }
 
 Result TXService::TX_133() {
-    return GetValueFromConfig("tx133_result");
+    return 0;
 }
 
 Result TXService::TX_134() {
-    return GetValueFromConfig("tx134_result");
+    return 0;
 }
 
 Result TXService::TX_135() {
-    return GetValueFromConfig("tx135_result");
+    return 1;
 }
 
 Result TXService::TX_136() {
-    return GetValueFromConfig("tx136_result");
+    return 0;
 }
 
 Result TXService::TX_137() {
-    return GetValueFromConfig("tx137_result");
-}
-
-Result TXService::GetValueFromConfig(string optionName) {
-    auto config = Ini::parseFile("sdmc:/config/reinx-spoofer/config.ini");
-    if (config == nullptr) {
-        return DEFAULT_VALUE;
-    }
-
-    auto tx = config->findSection("tx");
-    if (tx == nullptr) {
-        delete config;
-        return DEFAULT_VALUE;
-    }
-
-    auto option = tx->findFirstOption(optionName);
-    if (option == nullptr) {
-        delete config;
-        return DEFAULT_VALUE;
-    }
-
-    auto value = stoi(option->value, nullptr, 0);
-    delete config;
-    return value;
+    return 0;
 }
