@@ -69,7 +69,7 @@ endif
 # list of directories containing libraries, this must be the top level containing
 # include and lib
 #---------------------------------------------------------------------------------
-LIBDIRS	:= $(PORTLIBS) $(LIBNX) $(CURDIR)/libstratosphere $(CURDIR)/SimpleIniParser
+LIBDIRS	:= $(PORTLIBS) $(LIBNX) $(CURDIR)/libstratosphere $(CURDIR)/Simple-INI-Parser
 
 
 #---------------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 [submodule "libstratosphere"]
 	path = libstratosphere
 	url = git@github.com:Atmosphere-NX/libstratosphere.git
-[submodule "SimpleIniParser"]
-	path = SimpleIniParser
-	url = https://github.com/AtlasNX/SimpleIniParser.git
+[submodule "Simple-INI-Parser"]
+	path = Simple-INI-Parser
+	url = https://git.nicholemattera.com/NicholeMattera/Simple-INI-Parser.git
